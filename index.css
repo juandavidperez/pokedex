@@ -1,0 +1,75 @@
+body{
+  background-color: #ff5349;
+}
+#title{
+  text-align: center;
+  font-size:25px;
+
+}
+#div-text{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top:10px;
+}
+#texto{
+  border-radius:12px 0 0 12px;
+  width: 50%;
+  height: 25px;
+  font-family:'Ubuntu', monospace;
+  font-size:medium;
+}
+#boton{
+  position:relative;
+  border-radius:0 12px 12px 0;
+  height: 29px;
+  font-family:'Ubuntu', monospace;
+  font-size:medium;
+  right: 1px;
+  background-color: aquamarine;
+}
+#name{
+  display:inline;
+}
+#number{
+  display:inline
+}
+div#barbutton1{
+  cursor:pointer;
+}
+div#barbutton2{
+  cursor: pointer;
+}
+.blueButton{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-family:'Press Start 2P', cursive;
+  cursor: pointer;
+}
+div#yellowBox1{
+  text-align:center;
+}
+div#yellowBox2{
+  text-align:center;
+}
+div#topcross{
+  cursor: pointer;
+}
+div#leftcross{
+  cursor: pointer;
+}
+div#rightcross{
+  cursor: pointer;
+}
+div#botcross{
+  cursor: pointer;
+}
+img{
+  border-radius: 10px;
+}
+div#picture{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
