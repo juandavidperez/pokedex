@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="pokedex.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <p id="title">Esta es una pokedex</p>
     <div id="div-text">
       <input type="text" id="texto">
-      <input type="button" id="boton" value="Buscar">
+      <button id="boton">Buscar</button>
     </div>
+    <div id="fondo">
     <div id="pokedex">
         <div id="left">
           <div id="logo"></div>
@@ -56,43 +56,43 @@
           <div id="barbutton1"></div>
           <div id="barbutton2"></div>
           <div id="cross">
-            <div id="leftcross">
+            <button id="leftcross">
               <div id="leftT"></div>
-            </div>
-            <div id="topcross">
+            </button>
+            <button id="topcross">
               <div id="upT"></div>
-            </div>
-            <div id="rightcross">
+            </button>
+            <button id="rightcross">
               <div id="rightT"></div>
-            </div>
+            </button>
             <div id="midcross">
               <div id="midCircle"></div>
             </div>
-            <div id="botcross">
+            <button id="botcross">
               <div id="downT"></div>
-            </div>
+            </button>
           </div>
         </div>
         <div id="right">
           <div id="stats">
-            <p id="name"></p><br>
+            <p id="name"></p>
             <p id="number"></p>
             <p id="type"><br/></p>
             <p id="desc"><br/></p>
           </div>
           <div id="blueButtons1">
-            <button class="blueButton">0</button>
-            <button class="blueButton">1</button>
-            <button class="blueButton">2</button>
-            <button class="blueButton">3</button>
-            <button class="blueButton">4</button>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
           </div>
           <div id="blueButtons2">
-            <button class="blueButton">5</button>
-            <button class="blueButton">6</button>
-            <button class="blueButton">7</button>
-            <button class="blueButton">8</button>
-            <button class="blueButton">9</button>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
+            <div class="blueButton"></div>
           </div>
           <div id="miniButtonGlass4"></div>
           <div id="miniButtonGlass5"></div>
@@ -110,6 +110,7 @@
           <div id="curve2_right"></div>
         </div>
       </div>
+    </div>
     <script src="index.js"></script>
 </body>
 </html>

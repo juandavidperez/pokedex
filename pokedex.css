@@ -11,6 +11,9 @@
 	{
 		width: 750px;
 		margin: 50px auto 0 auto;
+		transform: translate(0%, 50%);
+		position:relative;
+		top:10px;
 	}
 
 	div#left
@@ -459,7 +462,7 @@
 		left: 230px;
 	}
 
-	div#topcross
+	#topcross
 	{
 		width: 30px;
 		height: 30px;
@@ -483,9 +486,10 @@
 		-webkit-border-top-right-radius: 5px;
 		-moz-border-top-right-radius: 5px;
 		-o-border-top-right-radius: 5px;
+		border-style: outset none outset outset;
 	}
 
-	div#leftcross
+	#leftcross
 	{
 		width: 30px;
 		height: 30px;
@@ -510,6 +514,7 @@
 		-webkit-border-bottom-left-radius: 5px;
 		-moz-border-bottom-left-radius: 5px;
 		-o-border-bottom-left-radius: 5px;
+		border-style: outset none outset outset;
 	}
 
 	div#midcross
@@ -528,7 +533,7 @@
 		-o-box-shadow: -3px 2px #010101;
 	}
 
-	div#rightcross
+	#rightcross
 	{
 		width: 30px;
 		height: 30px;
@@ -552,9 +557,10 @@
 		-webkit-border-bottom-right-radius: 5px;
 		-moz-border-bottom-right-radius: 5px;
 		-o-border-bottom-right-radius: 5px;
+		border-style: outset outset outset none;
 	}
 
-	div#botcross
+	#botcross
 	{
 		width: 30px;
 		height: 30px;
@@ -578,6 +584,7 @@
 		-webkit-border-bottom-right-radius: 5px;
 		-moz-border-bottom-right-radius: 5px;
 		-o-border-bottom-right-radius: 5px;
+		border-style: none outset outset outset;
 	}
 
 	div#upT
@@ -678,7 +685,7 @@
 	{
 		width: 350px;
 		height: 80px;
-		background-color: #ff5349;
+		background-color: rgba(255, 255, 255, 0.01);
 
 		border-top-right-radius: 30px;
 		-webkit-border-top-right-radius: 30px;
@@ -690,7 +697,7 @@
 	{
 		width: 216px;
 		height: 100px;
-		background-color: #ff5349;
+		background-color: #fcaca4;
 		float: left;
 
 		position: absolute;
@@ -943,6 +950,12 @@
 	div#pokedex
 	{
 		width: 400px;
+		position: relative;
+		left: 5px;
+	}
+
+	div#fondo{
+		width: 430px;
 	}
 
 	div#logo

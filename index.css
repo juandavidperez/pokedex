@@ -1,6 +1,14 @@
 body{
   background-color: #ff5349;
 }
+div#fondo{
+  width: 800px;
+  height: 530px;
+  background-color: rgba(255, 255, 255, 0.5);
+	margin: 50px auto 0 auto;
+  border-radius: 20px;
+  position: relative;
+}
 #title{
   text-align: center;
   font-size:25px;
@@ -22,6 +30,7 @@ body{
 #boton{
   position:relative;
   border-radius:0 12px 12px 0;
+  width: 75px;
   height: 29px;
   font-family:'Ubuntu', monospace;
   font-size:medium;
@@ -40,30 +49,26 @@ div#barbutton1{
 div#barbutton2{
   cursor: pointer;
 }
-.blueButton{
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  font-family:'Press Start 2P', cursive;
-  cursor: pointer;
-}
 div#yellowBox1{
   text-align:center;
 }
 div#yellowBox2{
   text-align:center;
 }
-div#topcross{
+#topcross{
   cursor: pointer;
 }
-div#leftcross{
+#leftcross{
   cursor: pointer;
 }
-div#rightcross{
+#rightcross{
   cursor: pointer;
 }
-div#botcross{
+#botcross{
   cursor: pointer;
+}
+div#bigbluebutton{
+  cursor:pointer;
 }
 img{
   border-radius: 10px;
