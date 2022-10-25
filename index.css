@@ -1,80 +1,88 @@
-body{
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+body {
   background-color: #ff5349;
 }
-div#fondo{
+div#fondo {
   width: 800px;
   height: 530px;
   background-color: rgba(255, 255, 255, 0.5);
-	margin: 50px auto 0 auto;
+  margin: 50px auto 0 auto;
   border-radius: 20px;
   position: relative;
 }
-#title{
+#title {
   text-align: center;
-  font-size:25px;
-
+  font-size: 25px;
 }
-#div-text{
+#div-text {
   position: relative;
   display: flex;
   justify-content: center;
-  top:10px;
+  top: 10px;
 }
-#texto{
-  border-radius:12px 0 0 12px;
+#texto {
+  border-radius: 12px 0 0 12px;
   width: 50%;
   height: 25px;
-  font-family:'Ubuntu', monospace;
-  font-size:medium;
+  font-family: "Ubuntu", monospace;
+  font-size: medium;
 }
-#boton{
-  position:relative;
-  border-radius:0 12px 12px 0;
+#boton {
+  position: relative;
+  border-radius: 0 12px 12px 0;
   width: 75px;
   height: 29px;
-  font-family:'Ubuntu', monospace;
-  font-size:medium;
+  font-family: "Ubuntu", monospace;
+  font-size: medium;
   right: 1px;
   background-color: aquamarine;
 }
-#name{
-  display:inline;
+#name {
+  display: inline;
 }
-#number{
-  display:inline
+#number {
+  display: inline;
 }
-div#barbutton1{
-  cursor:pointer;
-}
-div#barbutton2{
+div#barbutton1 {
   cursor: pointer;
 }
-div#yellowBox1{
-  text-align:center;
-}
-div#yellowBox2{
-  text-align:center;
-}
-#topcross{
+div#barbutton2 {
   cursor: pointer;
 }
-#leftcross{
+div#yellowBox1 {
+  text-align: center;
+}
+div#yellowBox2 {
+  text-align: center;
+}
+#topcross {
   cursor: pointer;
 }
-#rightcross{
+#leftcross {
   cursor: pointer;
 }
-#botcross{
+#rightcross {
   cursor: pointer;
 }
-div#bigbluebutton{
-  cursor:pointer;
+#botcross {
+  cursor: pointer;
 }
-img{
+div#bigbluebutton {
+  cursor: pointer;
+}
+img {
   border-radius: 10px;
 }
-div#picture{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+div#picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
