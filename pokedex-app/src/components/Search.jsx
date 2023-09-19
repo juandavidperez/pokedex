@@ -9,7 +9,11 @@ import {
   Image,
   Dimensions,
 } from "react-native";
-import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
+import {
+  Ionicons,
+  FontAwesome5,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 
 const windowWidth = Dimensions.get("window").width;
 const typesPokemon = {
@@ -134,6 +138,15 @@ const Search = ({ navigation }) => {
                               name="dragon"
                               size={16}
                               color="#fff"
+                            />
+                          ) : type.type.name === "flying" ? (
+                            <FontAwesome5 name="dove" size={16} color="#fff" />
+                          ) : type.type.name === "fighting" ? (
+                            <MaterialCommunityIcons
+                              name="boxing-glove"
+                              size={16}
+                              color="#fff"
+                              style={{ transform: [{ scaleX: -1 }] }}
                             />
                           ) : (
                             <Ionicons
