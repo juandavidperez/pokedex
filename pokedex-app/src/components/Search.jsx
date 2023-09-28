@@ -56,6 +56,9 @@ const typesPokemon = {
     steel: "cube",
   },
 };
+const fLMayus = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
 
 const Search = ({ navigation }) => {
   const [input, setInput] = useState(null);
@@ -70,16 +73,24 @@ const Search = ({ navigation }) => {
       if (!response.ok) throw "Error al obtener los datos";
       const data = await response.json();
       const results = data.results;
-
-      const filteredResults = results.filter((pokemon) => {
-        return pokemon.name.includes(input.toLowerCase());
-      });
+      const filter = (results, input) => {
+        if (input.length <= 3) {
+          return results.filter((pokemon) =>
+            pokemon.name.startsWith(input.toLowerCase())
+          );
+        } else {
+          return results.filter((pokemon) =>
+            pokemon.name.includes(input.toLowerCase())
+          );
+        }
+      };
 
       const pokemonData = await Promise.all(
-        filteredResults.slice(0, 10).map(async (pokemon) => {
-          const pokemonRecord = await fetch(pokemon.url);
-          if (!pokemonRecord.ok) throw "Error al obtener los datos";
-          return pokemonRecord.json();
+        filter(results, input).map(async (pokemon) => {
+          const response = await fetch(pokemon.url);
+          if (!response.ok) throw "Error al obtener los datos";
+          const data = await response.json();
+          return data;
         })
       );
 
@@ -113,7 +124,9 @@ const Search = ({ navigation }) => {
             {datos.map((pokemon) => {
               return (
                 <TouchableOpacity key={pokemon.id} style={styles.pokemon}>
-                  <Text style={styles.pokemonName}>{pokemon.name}</Text>
+                  <Text style={styles.pokemonName}>
+                    {fLMayus(pokemon.name)}
+                  </Text>
                   <Text style={styles.pokemonId}>#{pokemon.id}</Text>
                   <Image
                     source={{ uri: pokemon.sprites.front_default }}
@@ -147,6 +160,12 @@ const Search = ({ navigation }) => {
                               size={16}
                               color="#fff"
                               style={{ transform: [{ scaleX: -1 }] }}
+                            />
+                          ) : type.type.name === "ghost" ? (
+                            <MaterialCommunityIcons
+                              name="ghost"
+                              size={16}
+                              color="#fff"
                             />
                           ) : (
                             <Ionicons
@@ -182,7 +201,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: 50,
+    marginTop: 65,
     width: windowWidth - 100,
     height: 50,
     backgroundColor: "#fff",
@@ -195,7 +214,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   pokemonContainer: {
-    marginTop: 50,
+    marginTop: 25,
     alignItems: "center",
   },
   pokemonList: {
