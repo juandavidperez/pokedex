@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
+  Modal,
 } from "react-native";
 import {
   Ionicons,
@@ -56,6 +57,48 @@ const typesPokemon = {
     steel: "cube",
   },
 };
+const generation = {
+  1: {
+    first: 1,
+    last: 151,
+  },
+  2: {
+    first: 152,
+    last: 251,
+  },
+  3: {
+    first: 252,
+    last: 386,
+  },
+  4: {
+    first: 387,
+    last: 493,
+  },
+  5: {
+    first: 494,
+    last: 649,
+  },
+  6: {
+    first: 650,
+    last: 721,
+  },
+  7: {
+    first: 722,
+    last: 809,
+  },
+  8: {
+    first: 810,
+    last: 898,
+  },
+  9: {
+    first: 901,
+    last: 1012,
+  },
+  Todas: {
+    first: 1,
+    last: 809,
+  },
+};
 const fLMayus = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
@@ -63,12 +106,23 @@ const fLMayus = (string) => {
 const Search = ({ navigation }) => {
   const [input, setInput] = useState(null);
   const [datos, setDatos] = useState(null);
+  const [isGenerationModalVisible, setIsGenerationModalVisible] =
+    useState(false);
+  const [selectedGeneration, setSelectedGeneration] = useState("Todas");
+
+  const toggleGenerationModal = () => {
+    setIsGenerationModalVisible(!isGenerationModalVisible);
+  };
+  const handleGenerationSelect = (generation) => {
+    setSelectedGeneration(generation);
+    toggleGenerationModal();
+  };
 
   //una funcion que toma el nombre del pokemon y hace una peticion a la api
   const getPokemon = async () => {
     try {
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
+        `https://pokeapi.co/api/v2/pokemon?limit=${generation[selectedGeneration].last}&offset=${generation[selectedGeneration].first}`
       );
       if (!response.ok) throw "Error al obtener los datos";
       const data = await response.json();
@@ -114,10 +168,67 @@ const Search = ({ navigation }) => {
             name="search"
             size={24}
             color="#000"
-            style={{ marginRight: 15 }}
+            style={{ marginRight: 5 }}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={toggleGenerationModal}>
+          <Ionicons
+            name="options"
+            size={24}
+            color="#000"
+            style={{ marginRight: 20 }}
           />
         </TouchableOpacity>
       </View>
+      <Modal
+        visible={isGenerationModalVisible}
+        transparent={true}
+        animationType="slide"
+      >
+        <View
+          style={{
+            flex: 1,
+            marginTop: 100,
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{ backgroundColor: "white", padding: 20, borderRadius: 10 }}
+          >
+            <Text>Selecciona la generación:</Text>
+            <TouchableOpacity onPress={() => handleGenerationSelect("1")}>
+              <Text>Generación 1</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => handleGenerationSelect("2")}>
+              <Text>Generación 2</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => handleGenerationSelect("3")}>
+              <Text>Generación 3</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => handleGenerationSelect("4")}>
+              <Text>Generación 4</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => handleGenerationSelect("5")}>
+              <Text>Generación 5</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => handleGenerationSelect("6")}>
+              <Text>Generación 6</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => handleGenerationSelect("7")}>
+              <Text>Generación 7</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => handleGenerationSelect("8")}>
+              <Text>Generación 8</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => handleGenerationSelect("9")}>
+              <Text>Generación 9</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => handleGenerationSelect("Todas")}>
+              <Text>Predeterminado</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
       <View style={styles.pokemonContainer}>
         {datos && (
           <View style={styles.pokemonList}>
