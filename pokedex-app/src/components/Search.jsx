@@ -122,7 +122,7 @@ const Search = ({ navigation }) => {
   const getPokemon = async () => {
     try {
       const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?limit=${generation[selectedGeneration].last}&offset=${generation[selectedGeneration].first}`
+        `https://pokeapi.co/api/v2/pokemon?limit=151&offset=0`
       );
       if (!response.ok) throw "Error al obtener los datos";
       const data = await response.json();
