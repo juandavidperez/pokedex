@@ -36,6 +36,7 @@ const typesPokemon = {
     dragon: "#6F35FC",
     dark: "#705746",
     steel: "#B7B7CE",
+    fairy: "#D685AD",
   },
   nameIcon: {
     normal: "body",
@@ -55,48 +56,49 @@ const typesPokemon = {
     dragon: "dragon",
     dark: "moon",
     steel: "cube",
+    fairy: "moon",
   },
 };
 const generation = {
   1: {
-    first: 1,
-    last: 151,
+    first: 0,
+    limit: 151, //limit = last pokemon from generation - first pokemon from generation
   },
   2: {
     first: 152,
-    last: 251,
+    limit: 99, //limit = last pokemon from generation - first pokemon from generation
   },
   3: {
     first: 252,
-    last: 386,
+    limit: 134, //limit = last pokemon from generation - first pokemon from generation
   },
   4: {
     first: 387,
-    last: 493,
+    limit: 105, //limit = last pokemon from generation - first pokemon from generation
   },
   5: {
     first: 494,
-    last: 649,
+    limit: 155, //limit = last pokemon from generation - first pokemon from generation
   },
   6: {
     first: 650,
-    last: 721,
+    limit: 71, //limit = last pokemon from generation - first pokemon from generation
   },
   7: {
     first: 722,
-    last: 809,
+    limit: 87, //limit = last pokemon from generation - first pokemon from generation
   },
   8: {
     first: 810,
-    last: 898,
+    limit: 88, //limit = last pokemon from generation - first pokemon from generation
   },
   9: {
     first: 901,
-    last: 1012,
+    limit: 111, //limit = last pokemon from generation - first pokemon from generation
   },
   Todas: {
-    first: 1,
-    last: 809,
+    first: 0,
+    limit: 1017, //limit = last pokemon  - first pokemon from generation
   },
 };
 const fLMayus = (string) => {
@@ -106,9 +108,10 @@ const fLMayus = (string) => {
 const Search = ({ navigation }) => {
   const [input, setInput] = useState(null);
   const [datos, setDatos] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const [isGenerationModalVisible, setIsGenerationModalVisible] =
     useState(false);
-  const [selectedGeneration, setSelectedGeneration] = useState("Todas");
+  const [selectedGeneration, setSelectedGeneration] = useState(1);
 
   const toggleGenerationModal = () => {
     setIsGenerationModalVisible(!isGenerationModalVisible);
@@ -116,13 +119,14 @@ const Search = ({ navigation }) => {
   const handleGenerationSelect = (generation) => {
     setSelectedGeneration(generation);
     toggleGenerationModal();
+    getPokemon();
   };
 
   //una funcion que toma el nombre del pokemon y hace una peticion a la api
   const getPokemon = async () => {
     try {
       const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?limit=151&offset=0`
+        `https://pokeapi.co/api/v2/pokemon?offset=${generation[selectedGeneration].first}&limit=${generation[selectedGeneration].limit}`
       );
       if (!response.ok) throw "Error al obtener los datos";
       const data = await response.json();
@@ -188,12 +192,16 @@ const Search = ({ navigation }) => {
         <View
           style={{
             flex: 1,
-            marginTop: 100,
-            alignItems: "center",
+            justifyContent: "flex-end",
           }}
         >
           <View
-            style={{ backgroundColor: "white", padding: 20, borderRadius: 10 }}
+            style={{
+              backgroundColor: "white",
+              padding: 20,
+              borderTopLeftRadius: 20,
+              borderTopRightRadius: 20,
+            }}
           >
             <Text>Selecciona la generación:</Text>
             <TouchableOpacity onPress={() => handleGenerationSelect("1")}>
@@ -298,6 +306,17 @@ const Search = ({ navigation }) => {
           </View>
         )}
       </View>
+      <View style={styles.pagination}>
+        <TouchableOpacity style={{ width: "20%", paddingLeft: 50 }}>
+          <Ionicons name="caret-back" size={24} color="#000" />
+        </TouchableOpacity>
+        <Text style={{ width: "20%", textAlign: "center", fontWeight: "bold" }}>
+          {currentPage}
+        </Text>
+        <TouchableOpacity style={{ width: "20%", paddingRight: 20 }}>
+          <Ionicons name="caret-forward" size={24} color="#000" />
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
@@ -350,6 +369,14 @@ const styles = StyleSheet.create({
   pokemonId: {
     fontSize: 14,
     fontWeight: "bold",
+  },
+  pagination: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 20,
+    marginBottom: 40,
   },
 });
 
