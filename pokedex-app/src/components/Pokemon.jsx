@@ -6,8 +6,24 @@ import {
   Image,
   TouchableOpacity,
   Dimensions,
-  Animated,
 } from "react-native";
+
+const pokemonBackgroundColors = {
+  fire: "#Fbbd62",
+  grass: "#DEFDE0",
+  electric: "#FCF7DE",
+  water: "#DEF3FD",
+  ground: "#f4e7da",
+  rock: "#d5d5d4",
+  fairy: "#fceaff",
+  poison: "#98d7a5",
+  bug: "#f8d5a3",
+  dragon: "#97b3e6",
+  psychic: "#eaeda1",
+  flying: "#F5F5F5",
+  fighting: "#E6E0D4",
+  normal: "#F5F5F5",
+};
 
 const windowWidth = Dimensions.get("window").width;
 const fLMayus = (string) => {
@@ -16,33 +32,28 @@ const fLMayus = (string) => {
 
 const Pokemon = ({ route }) => {
   const { pokemon } = route.params;
-  const [showFrontImage, setShowFrontImage] = useState(true);
-
-  const handleImagePress = () => {
-    setShowFrontImage(!showFrontImage);
-  };
 
   return (
     <View style={styles.container}>
-      <View style={styles.pokemonContainer}>
+      <View
+        style={[
+          styles.imageContainer,
+          {
+            backgroundColor:
+              pokemonBackgroundColors[pokemon.types[0].type.name],
+          },
+        ]}
+      >
         {pokemon.sprites && (
-          <TouchableOpacity
-            onPress={() => {
-              handleImagePress();
+          <Image
+            source={{
+              uri: pokemon.sprites.other["official-artwork"].front_default,
             }}
-          >
-            <Image
-              source={{
-                uri: showFrontImage
-                  ? pokemon.sprites.front_default
-                  : pokemon.sprites.back_default,
-              }}
-              style={styles.image}
-            />
-          </TouchableOpacity>
+            style={styles.image}
+          />
         )}
-        <View style={styles.infoContainer}></View>
       </View>
+      <View style={styles.infoContainer}></View>
     </View>
   );
 };
@@ -50,29 +61,23 @@ const Pokemon = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     height: "100%",
-    backgroundColor: "#FF6961",
+    backgroundColor: "#e0e0e0",
     alignItems: "center",
-    justifyContent: "center",
   },
-  pokemonContainer: {
+  imageContainer: {
+    width: "100%",
+    height: "30%",
     backgroundColor: "#fff",
-    width: windowWidth - 40,
-    height: "80%",
+    padding: 20,
     borderRadius: 20,
     alignItems: "center",
-    elevation: 4,
   },
   image: {
     width: 200,
     height: 200,
-    marginVertical: 25,
-  },
-  infoContainer: {
-    alignItems: "center",
-    width: "90%",
-    height: "50%",
-    backgroundColor: "#FF6961",
-    borderRadius: 20,
+    marginTop: 20,
+    borderColor: "#000",
+    borderWidth: 1,
   },
 });
 

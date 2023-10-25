@@ -33,7 +33,7 @@ const typesPokemon = {
     bug: "#A6B91A",
     rock: "#B6A136",
     ghost: "#735797",
-    dragon: "#6F35FC",
+    dragon: "#00aae4",
     dark: "#705746",
     steel: "#B7B7CE",
     fairy: "#D685AD",
@@ -57,6 +57,26 @@ const typesPokemon = {
     dark: "moon",
     steel: "cube",
     fairy: "moon",
+  },
+  backgroundColor: {
+    fire: "#Fbbd62",
+    grass: "#C2F9D6",
+    electric: "#F9F4C0",
+    water: "#B5E4FC",
+    ground: "#E2BF65",
+    rock: "#B6A136",
+    fairy: "#D685AD",
+    poison: "#A33EA1",
+    bug: "#A6B91A",
+    dragon: "#97b3e6",
+    psychic: "#F95587",
+    flying: "#F5F5F5",
+    fighting: "#E6E0D4",
+    normal: "#F5F5F5",
+    ice: "#C3ECEB",
+    dark: "#705746",
+    steel: "#B7B7CE",
+    ghost: "#735797",
   },
 };
 const generation = {
@@ -244,7 +264,15 @@ const Search = ({ navigation }) => {
               return (
                 <TouchableOpacity
                   key={pokemon.id}
-                  style={styles.pokemon}
+                  style={[
+                    styles.pokemon,
+                    {
+                      backgroundColor:
+                        typesPokemon.backgroundColor[
+                          pokemon.types[0].type.name
+                        ] + "90",
+                    },
+                  ]}
                   onPress={() => navigation.navigate("Pokemon", { pokemon })}
                 >
                   <Text style={styles.pokemonName}>
@@ -252,7 +280,10 @@ const Search = ({ navigation }) => {
                   </Text>
                   <Text style={styles.pokemonId}>#{pokemon.id}</Text>
                   <Image
-                    source={{ uri: pokemon.sprites.front_default }}
+                    source={{
+                      uri: pokemon.sprites.other["official-artwork"]
+                        .front_default,
+                    }}
                     style={{ width: 100, height: 100 }}
                   />
                   <View style={{ flexDirection: "row" }}>
@@ -328,7 +359,7 @@ const Search = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     height: "100%",
-    backgroundColor: "#FF6961",
+    backgroundColor: "#ccc",
   },
   searchContainer: {
     flexDirection: "row",
