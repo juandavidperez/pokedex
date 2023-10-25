@@ -242,7 +242,11 @@ const Search = ({ navigation }) => {
           <View style={styles.pokemonList}>
             {datos.map((pokemon) => {
               return (
-                <TouchableOpacity key={pokemon.id} style={styles.pokemon}>
+                <TouchableOpacity
+                  key={pokemon.id}
+                  style={styles.pokemon}
+                  onPress={() => navigation.navigate("Pokemon", { pokemon })}
+                >
                   <Text style={styles.pokemonName}>
                     {fLMayus(pokemon.name)}
                   </Text>
