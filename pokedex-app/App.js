@@ -1,6 +1,6 @@
 import React from "react";
 import FirstScreen from "./src/components/FirstScreen";
-import Main from "./src/components/Main";
+import Pokemon from "./src/components/Pokemon";
 import Search from "./src/components/Search";
 
 import { NavigationContainer } from "@react-navigation/native";
@@ -19,7 +19,7 @@ export default function App() {
       >
         <Stack.Screen name={"FirstScreen"} component={FirstScreen} />
         <Stack.Screen name={"Search"} component={Search} />
-        <Stack.Screen name={"Main"} component={Main} />
+        <Stack.Screen name={"Pokemon"} component={Pokemon} />
       </Stack.Navigator>
     </NavigationContainer>
   );

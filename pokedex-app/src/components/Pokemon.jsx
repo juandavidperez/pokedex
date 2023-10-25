@@ -8,7 +8,7 @@ import {
   Dimensions,
 } from "react-native";
 
-const Main = () => {
+const Pokemon = () => {
   return (
     <View style={styles.container}>
       <Text>aa</Text>
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Main;
+export default Pokemon;
