@@ -17,7 +17,7 @@ import {
 } from "@expo/vector-icons";
 
 const windowWidth = Dimensions.get("window").width;
-const typesPokemon = {
+export const typesPokemon = {
   color: {
     normal: "#A8A77A",
     fire: "#EE8130",
@@ -359,7 +359,7 @@ const Search = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     height: "100%",
-    backgroundColor: "#ccc",
+    backgroundColor: "#aaa",
   },
   searchContainer: {
     flexDirection: "row",
