@@ -7,23 +7,8 @@ import {
   TouchableOpacity,
   Dimensions,
 } from "react-native";
-
-const pokemonBackgroundColors = {
-  fire: "#Fbbd62",
-  grass: "#DEFDE0",
-  electric: "#FCF7DE",
-  water: "#DEF3FD",
-  ground: "#f4e7da",
-  rock: "#d5d5d4",
-  fairy: "#fceaff",
-  poison: "#98d7a5",
-  bug: "#f8d5a3",
-  dragon: "#97b3e6",
-  psychic: "#eaeda1",
-  flying: "#F5F5F5",
-  fighting: "#E6E0D4",
-  normal: "#F5F5F5",
-};
+import { typesPokemon } from "./Search";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const windowWidth = Dimensions.get("window").width;
 const fLMayus = (string) => {
@@ -40,7 +25,7 @@ const Pokemon = ({ route }) => {
           styles.imageContainer,
           {
             backgroundColor:
-              pokemonBackgroundColors[pokemon.types[0].type.name],
+              typesPokemon.backgroundColor[pokemon.types[0].type.name] + "90",
           },
         ]}
       >
@@ -53,7 +38,31 @@ const Pokemon = ({ route }) => {
           />
         )}
       </View>
-      <View style={styles.infoContainer}></View>
+      <View style={styles.infoContainer}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            width: "100%",
+            height: 25,
+            alignItems: "center",
+            marginTop: 10,
+          }}
+        >
+          <MaterialCommunityIcons
+            name="pokeball"
+            size={20}
+            color={typesPokemon.backgroundColor[pokemon.types[0].type.name]}
+          />
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+            {fLMayus(pokemon.name)}
+          </Text>
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+            {" "}
+            #{pokemon.id}
+          </Text>
+        </View>
+      </View>
     </View>
   );
 };
@@ -61,7 +70,7 @@ const Pokemon = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     height: "100%",
-    backgroundColor: "#e0e0e0",
+    backgroundColor: "#aaa",
     alignItems: "center",
   },
   imageContainer: {
@@ -76,8 +85,12 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     marginTop: 20,
-    borderColor: "#000",
-    borderWidth: 1,
+  },
+  infoContainer: {
+    width: "100%",
+    height: "70%",
+    padding: 20,
+    alignItems: "center",
   },
 });
 
